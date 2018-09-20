@@ -1,0 +1,42 @@
+1，什么是Robotium
+  Robotium是一款类似Selenium但面向Android端的开源自动化框架，即支持测试Native应用，也支持
+  测试Hybrid应用（混合模式应用，指介于WebApp与NativeApp两者之间的App，兼具Native App良好的用户
+  交互体验的优势以及Web App夸平台，易变更的优势）；即支持黑盒自动化测试，也支持白盒形式的自动化测试。通过
+  Robotium用户可以编写出更强大健壮的UI自动化测试用例，并可以应用在功能测试，系统测试，用户验收测试等
+  多种测试场景中。
+Robotium主要具有以下优势：
+       同时支持Native应用和Hybrid应用。
+       由于是基于Instrumentation的测试，测试代码运行于测试应用所在的进程，控件识别与模拟器UI事件都可以快速执行，因此
+       测试用例执行速度更快。
+       由于是通过在运行时识别控件而非通过固定坐标方式，因此测试用例可以更健壮。
+       由于支持黑盒方式，不需要深入了解被测应用即可开展测试，因此编写用例花费的时间可以更少。
+       由于可以通过Maven,Gradle或者Ant运行测试用例，因此可以很好的作为持续集成的一部分。
+
+Robotium缺点：
+       由于是基于Instrumentation的事件发送，因此无法跨应用。
+       代码运行在被测进程，可能影响被测进程的内存，CPU占用，若用于性能监控数据会有误差。
+
+Robotium提供的类：
+        Robotium对外主要提供了以下几个类：
+        By:Web元素的选择器。
+        Condition：接口类，用户等待。
+        RobotiumUtils:工具类。
+        Solo:对外提供的各种API。
+        Solo.Config:Solo配置类。
+        SystemUtils:系统级工具类。
+        TimeOut:Solo配置类。
+        WebElement:Web元素的抽象类。
+其中Solo类是主要对外提供各种API的类，Solo类采用中介者模式，持有com.robotium.solo包下的其他类的实例对象，当我们调用
+Solo类中的API时，大多数是转而调用com.robotium.solo包下其他类的方法。
+com.robotium.solo包下主要有以下类：
+        Getter:提供控件获取相关API。
+        ActivityUtils:提供Activity相关API。
+        Asserter:提供断言相关API。
+        Clicker：提供模拟点击相关API。
+        ScreenshotTaker：提供截图相关的API。
+        Scroller：提供滚动相关的API。
+        Searcher:提供控件搜索相关的API。
+        ViewFetcher:提供控件过滤相关的API。
+        Waiter:提供控件等待相关的API。
+        WebUtils:提供Web支持相关的API。
+Robotium为了简化测试用例的编写，将以上的这些类都置为protected,对外只提供Solo类，因此，在编写测试用例时，主要实例化Solo类即可。        
